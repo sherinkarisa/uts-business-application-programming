@@ -30,6 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.masterMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.laporanPenjualanHarianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataPembayaranToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,8 +43,10 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AutoSize = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.masterMenuToolStripMenuItem,
+            this.allReportsToolStripMenuItem,
             this.laporanPenjualanHarianToolStripMenuItem,
             this.dataPembayaranToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -54,13 +57,26 @@
             // 
             // masterMenuToolStripMenuItem
             // 
+            this.masterMenuToolStripMenuItem.AutoSize = false;
             this.masterMenuToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
             this.masterMenuToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.masterMenuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.masterMenuToolStripMenuItem.Name = "masterMenuToolStripMenuItem";
-            this.masterMenuToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
+            this.masterMenuToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.masterMenuToolStripMenuItem.Text = "Item Master Data";
             this.masterMenuToolStripMenuItem.Click += new System.EventHandler(this.masterMenuToolStripMenuItem_Click);
+            // 
+            // allReportsToolStripMenuItem
+            // 
+            this.allReportsToolStripMenuItem.AutoSize = false;
+            this.allReportsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
+            this.allReportsToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allReportsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.allReportsToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.allReportsToolStripMenuItem.Name = "allReportsToolStripMenuItem";
+            this.allReportsToolStripMenuItem.Size = new System.Drawing.Size(190, 30);
+            this.allReportsToolStripMenuItem.Text = "All Reports";
+            this.allReportsToolStripMenuItem.Click += new System.EventHandler(this.allReportsToolStripMenuItem_Click);
             // 
             // laporanPenjualanHarianToolStripMenuItem
             // 
@@ -70,18 +86,19 @@
             this.laporanPenjualanHarianToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.laporanPenjualanHarianToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.laporanPenjualanHarianToolStripMenuItem.Name = "laporanPenjualanHarianToolStripMenuItem";
-            this.laporanPenjualanHarianToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
-            this.laporanPenjualanHarianToolStripMenuItem.Text = "Reports";
+            this.laporanPenjualanHarianToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
+            this.laporanPenjualanHarianToolStripMenuItem.Text = "Reports per Day";
             this.laporanPenjualanHarianToolStripMenuItem.Click += new System.EventHandler(this.laporanPenjualanHarianToolStripMenuItem_Click);
             // 
             // dataPembayaranToolStripMenuItem
             // 
+            this.dataPembayaranToolStripMenuItem.AutoSize = false;
             this.dataPembayaranToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
             this.dataPembayaranToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataPembayaranToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.dataPembayaranToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.dataPembayaranToolStripMenuItem.Name = "dataPembayaranToolStripMenuItem";
-            this.dataPembayaranToolStripMenuItem.Size = new System.Drawing.Size(168, 30);
+            this.dataPembayaranToolStripMenuItem.Size = new System.Drawing.Size(190, 30);
             this.dataPembayaranToolStripMenuItem.Text = "Data Transactions";
             this.dataPembayaranToolStripMenuItem.Click += new System.EventHandler(this.dataPembayaranToolStripMenuItem_Click);
             // 
@@ -134,12 +151,13 @@
             this.btn_simpan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
             this.btn_simpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_simpan.ForeColor = System.Drawing.Color.White;
-            this.btn_simpan.Location = new System.Drawing.Point(713, 402);
+            this.btn_simpan.Location = new System.Drawing.Point(677, 402);
             this.btn_simpan.Name = "btn_simpan";
-            this.btn_simpan.Size = new System.Drawing.Size(75, 36);
+            this.btn_simpan.Size = new System.Drawing.Size(111, 36);
             this.btn_simpan.TabIndex = 31;
             this.btn_simpan.Text = "LOG OUT";
             this.btn_simpan.UseVisualStyleBackColor = false;
+            this.btn_simpan.Click += new System.EventHandler(this.btn_simpan_Click);
             // 
             // DashboardAdmin
             // 
@@ -177,5 +195,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_simpan;
+        private System.Windows.Forms.ToolStripMenuItem allReportsToolStripMenuItem;
     }
 }

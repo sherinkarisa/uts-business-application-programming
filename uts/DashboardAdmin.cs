@@ -34,5 +34,16 @@ namespace uts
             LaporanPenjualan frm2 = new LaporanPenjualan();
             frm2.ShowDialog();
         }
+
+        private void btn_simpan_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void allReportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllTransaction frm2 = new AllTransaction();
+            frm2.ShowDialog();
+        }
     }
 }

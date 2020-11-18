@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllTransaction.Designer.cs">
+      <DependentUpon>AllTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="DashboardAdmin.cs">
       <SubType>Form</SubType>
@@ -97,6 +103,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AllTransaction.resx">
+      <DependentUpon>AllTransaction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DashboardAdmin.resx">
       <DependentUpon>DashboardAdmin.cs</DependentUpon>
     </EmbeddedResource>

@@ -39,22 +39,23 @@
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_hapus = new System.Windows.Forms.Button();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 84);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID. Menu";
             // 
@@ -65,39 +66,41 @@
             this.txt_idmenu.Location = new System.Drawing.Point(109, 83);
             this.txt_idmenu.Name = "txt_idmenu";
             this.txt_idmenu.ReadOnly = true;
-            this.txt_idmenu.Size = new System.Drawing.Size(189, 20);
+            this.txt_idmenu.Size = new System.Drawing.Size(87, 20);
             this.txt_idmenu.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 135);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 134);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Nama Menu";
+            this.label3.Text = "Menu";
             // 
             // txt_namamenu
             // 
-            this.txt_namamenu.Location = new System.Drawing.Point(109, 133);
+            this.txt_namamenu.Location = new System.Drawing.Point(109, 132);
             this.txt_namamenu.Name = "txt_namamenu";
-            this.txt_namamenu.Size = new System.Drawing.Size(189, 20);
+            this.txt_namamenu.Size = new System.Drawing.Size(167, 20);
             this.txt_namamenu.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 185);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 184);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Harga";
+            this.label4.Text = "Price";
             // 
             // txt_harga
             // 
-            this.txt_harga.Location = new System.Drawing.Point(109, 182);
+            this.txt_harga.Location = new System.Drawing.Point(109, 181);
             this.txt_harga.Name = "txt_harga";
-            this.txt_harga.Size = new System.Drawing.Size(189, 20);
+            this.txt_harga.Size = new System.Drawing.Size(167, 20);
             this.txt_harga.TabIndex = 6;
             // 
             // btn_simpan
@@ -118,7 +121,7 @@
             this.btn_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
             this.btn_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_edit.ForeColor = System.Drawing.Color.White;
-            this.btn_edit.Location = new System.Drawing.Point(121, 376);
+            this.btn_edit.Location = new System.Drawing.Point(109, 376);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(75, 36);
             this.btn_edit.TabIndex = 8;
@@ -131,7 +134,7 @@
             this.btn_hapus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
             this.btn_hapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_hapus.ForeColor = System.Drawing.Color.White;
-            this.btn_hapus.Location = new System.Drawing.Point(223, 376);
+            this.btn_hapus.Location = new System.Drawing.Point(201, 376);
             this.btn_hapus.Name = "btn_hapus";
             this.btn_hapus.Size = new System.Drawing.Size(75, 36);
             this.btn_hapus.TabIndex = 9;
@@ -156,32 +159,13 @@
             this.Column3});
             this.dgvData.Cursor = System.Windows.Forms.Cursors.Cross;
             this.dgvData.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
-            this.dgvData.Location = new System.Drawing.Point(327, 83);
+            this.dgvData.Location = new System.Drawing.Point(304, 83);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
-            this.dgvData.Size = new System.Drawing.Size(461, 329);
+            this.dgvData.Size = new System.Drawing.Size(484, 329);
             this.dgvData.TabIndex = 10;
             this.dgvData.SelectionChanged += new System.EventHandler(this.dgvData_SelectionChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID. Menu";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nama Menu";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 250;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Harga";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // label6
             // 
@@ -227,6 +211,26 @@
             this.label7.TabIndex = 24;
             this.label7.Text = "_______________";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID. Menu";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Menu";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Price";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
             // DataMasterMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,12 +275,12 @@
         private System.Windows.Forms.Button btn_edit;
         private System.Windows.Forms.Button btn_hapus;
         private System.Windows.Forms.DataGridView dgvData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
