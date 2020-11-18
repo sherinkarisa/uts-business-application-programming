@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_nomormeja = new System.Windows.Forms.TextBox();
@@ -37,6 +37,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -51,18 +56,14 @@
             this.txt_nominalbayar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -101,8 +102,8 @@
             // 
             this.dgvData.AllowUserToAddRows = false;
             this.dgvData.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -111,14 +112,15 @@
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column3});
+            this.Column3,
+            this.Photo});
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(16)))), ((int)(((byte)(0)))));
             this.dgvData.Location = new System.Drawing.Point(12, 82);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
-            this.dgvData.Size = new System.Drawing.Size(393, 313);
+            this.dgvData.Size = new System.Drawing.Size(391, 313);
             this.dgvData.TabIndex = 3;
             // 
             // button1
@@ -150,8 +152,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -172,6 +174,40 @@
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.Size = new System.Drawing.Size(368, 165);
             this.dataGridView1.TabIndex = 6;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID. Menu";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 45;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Menu";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Price";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 75;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "Qty";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            this.qty.Width = 30;
+            // 
+            // subtotal
+            // 
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 75;
             // 
             // label4
             // 
@@ -316,24 +352,12 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
-            this.label8.Location = new System.Drawing.Point(411, 75);
+            this.label8.Location = new System.Drawing.Point(417, 75);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(385, 9);
+            this.label8.Size = new System.Drawing.Size(377, 9);
             this.label8.TabIndex = 21;
             this.label8.Text = "---------------------------------------------------------------------------------" +
-    "--------------";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
-            this.label9.Location = new System.Drawing.Point(411, 192);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(385, 9);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "---------------------------------------------------------------------------------" +
-    "--------------";
+    "------------";
             // 
             // label10
             // 
@@ -368,59 +392,44 @@
             this.label12.TabIndex = 28;
             this.label12.Text = "Menu";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
+            this.label9.Location = new System.Drawing.Point(418, 192);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(377, 9);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "---------------------------------------------------------------------------------" +
+    "------------";
+            // 
             // Column1
             // 
             this.Column1.HeaderText = "ID. Menu";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 75;
+            this.Column1.Width = 50;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Menu";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 175;
+            this.Column2.Width = 110;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Price";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 70;
             // 
-            // dataGridViewTextBoxColumn1
+            // Photo
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID. Menu";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 45;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Menu";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Price";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 75;
-            // 
-            // qty
-            // 
-            this.qty.HeaderText = "Qty";
-            this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
-            this.qty.Width = 30;
-            // 
-            // subtotal
-            // 
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 75;
+            this.Photo.HeaderText = "Photo";
+            this.Photo.Name = "Photo";
+            this.Photo.ReadOnly = true;
             // 
             // Form1
             // 
@@ -428,10 +437,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txt_nominalbayar);
             this.Controls.Add(this.label7);
@@ -489,18 +498,19 @@
         private System.Windows.Forms.TextBox txt_nominalbayar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Photo;
     }
 }
 

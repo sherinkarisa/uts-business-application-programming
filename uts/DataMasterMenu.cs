@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Collections;
+using System.IO;
+
 
 namespace uts
 {
@@ -27,26 +29,38 @@ namespace uts
             btn_hapus.Enabled = false;
         }
 
+        private bool imgColumn = true;
+
         private void LoadData()
         {
             try
             {
+                if (imgColumn == true)
+                {
+                    DataGridViewImageColumn dgvimgcol = new DataGridViewImageColumn();
+                    dgvimgcol.HeaderText = "Photo";
+                    dgvimgcol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+                    dgvData.Columns.Add(dgvimgcol);
+                    imgColumn = false;
+                }
+                
                 using (var conn = new Connection().CreateAndOpenConnection())
                 {
                     using (var cmd = new SqlCommand())
                     {
                         cmd.Connection = conn;
-                        cmd.CommandText = @"Select id_menu, namamenu, harga From menu oRDER BY id_menu ASC";
+                        cmd.CommandText = @"Select id_menu, namamenu, harga, foto From menu oRDER BY id_menu ASC";
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
                                 {
-                                    this.dgvData.Rows.Add(new string[] {
+                                    this.dgvData.Rows.Add(new [] {
                                           reader["id_menu"].ToString(),
                                           reader["namamenu"].ToString(),
-                                          reader["harga"].ToString()
+                                          reader["harga"].ToString(),
+                                          reader["foto"]
                                      });
                                 }
                             }
@@ -54,9 +68,29 @@ namespace uts
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                MessageBox.Show(e.ToString());
+            }
+            addPicture();
+        }
+
+        private void addPicture()
+        {          
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                if (row.Cells[3].Value.ToString() != "")
+                {             
+                    byte[] images = (byte[])row.Cells[3].Value;                    
+                    
+                    MemoryStream mstream = new MemoryStream(images);
+                    Image img = Image.FromStream(mstream);
+                    this.dgvData.Columns[3].Visible = false;
+
+                    ((DataGridViewImageCell)row.Cells[4]).Value = img;
+
+                    row.Height = 80;
+                }
             }
         }
 
@@ -102,10 +136,11 @@ namespace uts
                     using (var cmd = new SqlCommand())
                     {
                         cmd.Connection = conn;
-                        cmd.CommandText = @"Insert Into menu Values (@namamenu,@harga)";
+                        cmd.CommandText = @"Insert Into menu (namamenu,harga,foto) Values (@namamenu,@harga,@foto)";
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@namamenu", txt_namamenu.Text);
                         cmd.Parameters.AddWithValue("@harga", txt_harga.Text);
+                        cmd.Parameters.AddWithValue("@foto", images);
                         int recAffeced = cmd.ExecuteNonQuery();
                         if (recAffeced > 0)
                         {
@@ -116,6 +151,7 @@ namespace uts
                             txt_harga.Text = "";
                             txt_namamenu.Focus();
                             autoID();
+                            this.pictureBox1.Image = null;
                             MessageBox.Show("Data Berhasil Ditambah", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -133,6 +169,15 @@ namespace uts
                 btn_simpan.Enabled = false;
                 btn_edit.Enabled = true;
                 btn_hapus.Enabled = true;
+
+                if (row.Cells[3].Value.ToString() != "")
+                {
+                    images = (byte[])row.Cells[3].Value;
+                    MemoryStream mstream = new MemoryStream(images);
+                    pictureBox1.Image = Image.FromStream(mstream);
+                }
+
+                
             }
         }
 
@@ -155,6 +200,7 @@ namespace uts
                         txt_namamenu.Text = "";
                         txt_harga.Text = "";
                         txt_namamenu.Focus();
+                        this.pictureBox1.Image = null;
                         autoID();
                         btn_edit.Enabled = false;
                         btn_hapus.Enabled = false;
@@ -184,22 +230,65 @@ namespace uts
                     using (var cmd = new SqlCommand())
                     {
                         cmd.Connection = conn;
-                        cmd.CommandText = @"UPDATE menu SET namamenu = @namamenu, harga=@harga WHERE id_menu=@idmenu";
+                        cmd.CommandText = @"UPDATE menu SET namamenu = @namamenu, harga=@harga, foto=@foto WHERE id_menu=@idmenu";
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@idmenu", txt_idmenu.Text);
                         cmd.Parameters.AddWithValue("@namamenu", txt_namamenu.Text);
                         cmd.Parameters.AddWithValue("@harga", txt_harga.Text);
+                        cmd.Parameters.AddWithValue("@foto",images);
                         int recAffeced = cmd.ExecuteNonQuery();
                         if (recAffeced > 0)
                         {
                             this.dgvData.DataSource = null;
                             this.dgvData.Rows.Clear();
                             LoadData();
+                            this.pictureBox1.Image = null;
                             MessageBox.Show("Data Berhasil Diubah", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
             }
+        }
+
+        private byte[] images = null;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (var OpenFileDialog = new OpenFileDialog())
+            {
+                OpenFileDialog.Title = "Choose Image";
+                OpenFileDialog.Filter = "All Files (*.*)|*.*";
+                OpenFileDialog.CheckPathExists = true;
+                OpenFileDialog.CheckFileExists = true;
+                OpenFileDialog.Multiselect = false;
+                OpenFileDialog.FileName = "";
+                if (OpenFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        this.pictureBox1.Load(OpenFileDialog.FileName);
+                        this.pictureBox1.Tag = OpenFileDialog.FileName;
+
+                        //addphoto
+                        FileStream stream = new FileStream(OpenFileDialog.FileName, FileMode.Open, FileAccess.Read);
+                        BinaryReader br = new BinaryReader(stream);
+                        images = br.ReadBytes((int)stream.Length);
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Mohon memilih file berjenis gambar.", "Browse File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+
+            //OpenFileDialog dialog = new OpenFileDialog();
+            //dialog.Filter = "jpg file(*.jpg)|*.jpg|png files(*.png)|*.png|All file(*.*)|*.*";
+            //if(dialog.ShowDialog()==DialogResult.OK)
+            //{
+            //    picturelocation = dialog.FileName.ToString();
+            //    pictureBox1.ImageLocation = picturelocation;
+            //}
         }
     }
 }

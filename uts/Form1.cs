@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Collections;
+using System.IO;
 
 namespace uts
 {
@@ -22,27 +23,37 @@ namespace uts
             this.dgvData.AutoGenerateColumns = false;
             button3.Enabled = false;
         }
+        private bool imgColumn = true;
 
         private void LoadData()
         {
             try
             {
+                if (imgColumn == true)
+                {
+                    DataGridViewImageColumn dgvimgcol = new DataGridViewImageColumn();
+                    dgvimgcol.HeaderText = "Photo";
+                    dgvimgcol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+                    dgvData.Columns.Add(dgvimgcol);
+                    imgColumn = false;
+                }
                 using (var conn = new Connection().CreateAndOpenConnection())
                 {
                     using (var cmd = new SqlCommand())
                     {
                         cmd.Connection = conn;
-                        cmd.CommandText = @"Select id_menu, namamenu, harga From menu ORDER BY namamenu ASC";
+                        cmd.CommandText = @"Select id_menu, namamenu, harga, foto From menu ORDER BY namamenu ASC";
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
                                 {
-                                    this.dgvData.Rows.Add(new string[] {
+                                    this.dgvData.Rows.Add(new [] {
                                           reader["id_menu"].ToString(),
                                           reader["namamenu"].ToString(),
-                                          reader["harga"].ToString()
+                                          reader["harga"].ToString(),
+                                          reader["foto"]
                                      });
                                 }
                             }
@@ -50,9 +61,31 @@ namespace uts
                     }
                 }
             }
-            catch (Exception)
+            catch(Exception e)
             {
-                throw;
+                MessageBox.Show(e.ToString());
+            }
+            addPicture();
+        }
+
+        private void addPicture()
+        {
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                if (row.Cells[3].Value.ToString() != "")
+                {
+                    byte[] images = (byte[])row.Cells[3].Value;
+
+                    MemoryStream mstream = new MemoryStream(images);
+                    Image img = Image.FromStream(mstream);
+                    this.dgvData.Columns[3].Visible = false;
+
+                    ((DataGridViewImageCell)row.Cells[4]).Value = img;
+
+                    row.Height = 80;
+                }
+
+
             }
         }
 
@@ -65,7 +98,7 @@ namespace uts
                     using (var cmd = new SqlCommand())
                     {
                         cmd.Connection = conn;
-                        cmd.CommandText = @"Select id_menu, namamenu, harga From menu Where id_menu = @idmenu";
+                        cmd.CommandText = @"Select id_menu, namamenu, harga, foto From menu Where id_menu = @idmenu";
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@idmenu", id_menu);
                         using (var reader = cmd.ExecuteReader())

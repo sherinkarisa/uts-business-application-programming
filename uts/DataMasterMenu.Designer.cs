@@ -43,10 +43,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.button1 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -108,7 +114,7 @@
             this.btn_simpan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
             this.btn_simpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_simpan.ForeColor = System.Drawing.Color.White;
-            this.btn_simpan.Location = new System.Drawing.Point(15, 376);
+            this.btn_simpan.Location = new System.Drawing.Point(15, 387);
             this.btn_simpan.Name = "btn_simpan";
             this.btn_simpan.Size = new System.Drawing.Size(75, 36);
             this.btn_simpan.TabIndex = 7;
@@ -121,7 +127,7 @@
             this.btn_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
             this.btn_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_edit.ForeColor = System.Drawing.Color.White;
-            this.btn_edit.Location = new System.Drawing.Point(109, 376);
+            this.btn_edit.Location = new System.Drawing.Point(109, 387);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(75, 36);
             this.btn_edit.TabIndex = 8;
@@ -134,7 +140,7 @@
             this.btn_hapus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
             this.btn_hapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_hapus.ForeColor = System.Drawing.Color.White;
-            this.btn_hapus.Location = new System.Drawing.Point(201, 376);
+            this.btn_hapus.Location = new System.Drawing.Point(201, 387);
             this.btn_hapus.Name = "btn_hapus";
             this.btn_hapus.Size = new System.Drawing.Size(75, 36);
             this.btn_hapus.TabIndex = 9;
@@ -156,14 +162,15 @@
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column3});
+            this.Column3,
+            this.foto});
             this.dgvData.Cursor = System.Windows.Forms.Cursors.Cross;
             this.dgvData.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
             this.dgvData.Location = new System.Drawing.Point(304, 83);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
-            this.dgvData.Size = new System.Drawing.Size(484, 329);
+            this.dgvData.Size = new System.Drawing.Size(484, 340);
             this.dgvData.TabIndex = 10;
             this.dgvData.SelectionChanged += new System.EventHandler(this.dgvData_SelectionChanged);
             // 
@@ -211,6 +218,38 @@
             this.label7.TabIndex = 24;
             this.label7.Text = "_______________";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(111, 243);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(140, 120);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(12, 228);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Photo";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(13)))), ((int)(((byte)(0)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(109, 222);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 24);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "UPLOAD";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Column1
             // 
             this.Column1.HeaderText = "ID. Menu";
@@ -222,14 +261,20 @@
             this.Column2.HeaderText = "Menu";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
+            this.Column2.Width = 140;
             // 
             // Column3
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column3.HeaderText = "Price";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 80;
+            // 
+            // foto
+            // 
+            this.foto.HeaderText = "Photo";
+            this.foto.Name = "foto";
+            this.foto.ReadOnly = true;
             // 
             // DataMasterMenu
             // 
@@ -237,6 +282,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
@@ -258,6 +306,7 @@
             this.Text = "Data Master Menu";
             this.Load += new System.EventHandler(this.DataMasterMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,8 +328,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn foto;
     }
 }
